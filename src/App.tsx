@@ -1,34 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import './ExerciseListSearch.tsx'
+import ExerciseListSearch from "./ExerciseListSearch.tsx";
+import TextField from "@mui/material/TextField";
+import {useState} from "react";
+
 
 function App() {
-  const [count, setCount] = useState(0)
+
+    const [inputText, setInputText] = useState("");
+
+    const inputHandler = (e: { target: { value: string; }; }) => {
+
+        //convert input text to lower case
+
+        const lowerCase = e.target.value.toLowerCase();
+
+        setInputText(lowerCase);
+
+    };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+        <div className="main">
+            <h1>Exercise Search</h1>
+            <div className="search">
+                <TextField
+                    id="outlined-basic"
+                    onChange={inputHandler}
+                    variant="outlined"
+                    fullWidth
+                    label="Search"
+                />
+            </div>
+            {<ExerciseListSearch userInput={inputText}/>}
+        </div>
   )
 }
 
