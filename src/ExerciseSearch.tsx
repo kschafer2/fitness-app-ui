@@ -10,7 +10,7 @@ interface Props {
     userInput: string
 }
 
-const ExerciseListSearch = ({userInput}: Props) => {
+const ExerciseSearch = ({userInput}: Props) => {
     const [data, setData] = React.useState<Exercise[]>([]);
     const [loading, setLoading] = React.useState<boolean>(true);
     const [error, setError] = React.useState<string | null>(null);
@@ -67,4 +67,4 @@ function filter(exercises: Exercise[], searchTerm: string): Exercise[] {
     });
 }
 
-export default ExerciseListSearch;
+export default ExerciseSearch;
